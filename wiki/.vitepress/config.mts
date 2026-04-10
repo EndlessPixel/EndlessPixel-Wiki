@@ -40,7 +40,7 @@ export default defineConfig({
           {
             text: '新手入门', collapsed: false, items: [
               { text: '服务器版本说明', link: '/beginner/version' },
-              { text: '规则', link: '/beginner/rule' },
+              { text: '服务器规则', link: '/beginner/rule' },
               { text: '相关链接', link: '/beginner/link' }
             ]
           },
