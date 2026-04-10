@@ -4,6 +4,7 @@ const currentYear = new Date().getFullYear()
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  base: '/EndlessPixel-Wiki/',
   title: "EndlessPixel",
   description: "Server Wiki",
   lastUpdated: true,
