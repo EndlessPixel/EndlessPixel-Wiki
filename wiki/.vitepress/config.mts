@@ -52,7 +52,7 @@ export default defineConfig({
               { text: '技能', link: '/server_common/skill' },
               { text: '领地', link: '/server_common/dominion' },
               { text: '自杀', link: '/server_common/killme' },
-              { text: 'CDK', link: '/server_common/cdk' }
+              { text: '福利', link: '/server_common/welfare' }
             ]
           },
           {
