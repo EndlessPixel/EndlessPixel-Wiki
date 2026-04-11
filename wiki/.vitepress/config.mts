@@ -73,6 +73,7 @@ export default defineConfig({
                   { text: '大师切割机', link: '/server_feature/cutter' },
                   { text: '更多循声守卫战利品', link: '/server_feature/warden_loot' },
                   { text: 'BlazeandCave 成就包', link: '/server_feature/achievement' },
+                  { text: '附魔金苹果配方恢复', link: '/server_feature/enchanted_apple' },
                   { text: '粘液科技玩法', link: '/server_feature/slimefun' }
                 ]
               }
