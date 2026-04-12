@@ -8,7 +8,7 @@ Bilibili: [https://space.bilibili.com/3546799478409405](https://space.bilibili.c
 
 GitHub: [https://github.com/EndlessPixel](https://github.com/EndlessPixel)
 
-Gitee: [https://github.com/EndlessPixel](https://gitee.com/system_mini)
+Gitee: [https://gitee.com/system_mini](https://gitee.com/system_mini)
 
 Discord: [https://discord.gg/k63hRWt3fF](https://discord.gg/k63hRWt3fF)
 
