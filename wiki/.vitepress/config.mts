@@ -47,6 +47,7 @@ export default defineConfig({
           {
             text: '服务器指令', collapsed: false, items: [
               { text: '登录与注册', link: '/server_common/login' },
+              { text: '粘液科技', link: '/server_common/slimefun' },
               { text: '传送', link: '/server_common/tp' },
               { text: '皮肤', link: '/server_common/skin' },
               { text: '技能', link: '/server_common/skill' },
