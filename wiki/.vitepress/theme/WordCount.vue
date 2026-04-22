@@ -17,7 +17,7 @@ const countWords = () => {
   const contentEl = document.querySelector('.vp-doc')
   if (contentEl) {
     // 去除所有 HTML 标签和空白字符，再统计长度
-    const text = contentEl.innerText || ''
+    const text = contentEl.textContent || ''
     wordCount.value = text.replace(/\s+/g, '').length
   }
 }
@@ -33,9 +33,9 @@ watch(() => route.path, () => {
   setTimeout(countWords, 0)
 })
 
-// 阅读时间（中文按 500 字/分钟计算）
+// 阅读时间（中文按 200 字/分钟计算）
 const readTime = computed(() => {
-  const time = Math.ceil(wordCount.value / 500)
+  const time = Math.ceil(wordCount.value / 200)
   return time < 1 ? 1 : time
 })
 </script>
