@@ -44,32 +44,6 @@ const core = [
         { icon: 'bilibili', link: 'https://space.bilibili.com/3493282111818118' },
         { icon: 'tiktok', link: 'https://www.douyin.com/user/MS4wLjABAAAAtr1NLpE8IeFbRo9dr6hVWC_oJb4OWXrlq2pkr-pnMtc' }
     ]
-  },
-  {
-    avatar: 'http://q.qlogo.cn/g?b=qq&nk=3661651904&s=640',
-    name: '灵月',
-    title: '社群管理',
-    links: [
-        { icon: 'kuaishou', link: 'https://live.kuaishou.com/profile/ks88888vs999' },
-        { icon: 'qq', link: 'https://qm.qq.com/q/YeD1DEeswy' },
-        { icon: 'bilibili', link: 'https://space.bilibili.com/3493136588343665' }
-    ]
-  },
-  {
-    avatar: 'http://q.qlogo.cn/g?b=qq&nk=3190386431&s=640',
-    name: '流浪的小李子',
-    title: '后勤部',
-    links: [
-        { icon: 'bilibili', link: 'https://space.bilibili.com/3546902146583273' },
-        { icon: 'github', link: 'https://github.com/lldxlzy' }
-    ]
-  },
-  {
-    avatar: 'http://q.qlogo.cn/g?b=qq&nk=1876967353&s=640',
-    name: 'Arielle',
-    title: '服务器提供者',
-    links: [
-    ]
   }
 ]
 
