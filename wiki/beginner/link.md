@@ -14,9 +14,11 @@ Discord: [https://discord.gg/k63hRWt3fF](https://discord.gg/k63hRWt3fF)
 
 QQ: [https://qm.qq.com/cgi-bin/qm/qr?k=870594910](https://qm.qq.com/cgi-bin/qm/qr?k=870594910)
 
-Facebook：[https://facebook.com/system_mini/](https://facebook.com/system_mini/)
+Facebook：[https://www.facebook.com/system_mini/](https://www.facebook.com/system_mini/)
 
 Twitch: [https://www.twitch.tv/system_mini](https://www.twitch.tv/system_mini)
+
+YouTube: [https://www.youtube.com/channel/UCMhwQrCnysEi0z0PTB655Eg](https://www.youtube.com/channel/UCMhwQrCnysEi0z0PTB655Eg)
 
 Minecraft Servers Listing: [https://minecraft-servers-listing.com/endlesspixel/](https://minecraft-servers-listing.com/endlesspixel/)
 
