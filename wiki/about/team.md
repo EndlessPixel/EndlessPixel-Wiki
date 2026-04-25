@@ -1,15 +1,6 @@
----
-title: 团队成员
-layout: page
----
-
 <script setup>
 import {
-  VPTeamPage,
-  VPTeamPageTitle,
-  VPTeamMembers,
-  VPTeamPageSection
-} from 'vitepress/theme'
+  VPTeamPage, VPTeamPageTitle, VPTeamMembers, VPTeamPageSection } from 'vitepress/theme'
 
 // 核心团队
 const core = [
@@ -44,15 +35,6 @@ const core = [
         { icon: 'bilibili', link: 'https://space.bilibili.com/3493282111818118' },
         { icon: 'tiktok', link: 'https://www.douyin.com/user/MS4wLjABAAAAtr1NLpE8IeFbRo9dr6hVWC_oJb4OWXrlq2pkr-pnMtc' }
     ]
-  }
-]
-
-// 管理团队
-const managers = [
-  {
-    avatar: 'https://github.com/管理1.png',
-    name: '管理1',
-    title: '游戏服主管理'
   }
 ]
 </script>
