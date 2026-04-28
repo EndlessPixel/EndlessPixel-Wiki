@@ -27,7 +27,7 @@ export default defineConfig({
     nav: [
       { text: '首页', link: '/' },
       { text: '文档', link: '/docs' },
-      { text: 'API开放文档', link: '/api' },
+      { text: 'API开放文档', link: '/dev/api' },
       { text: '服务器状态', link: 'https://sys.epmc.top' },
       { text: '返回官网', link: 'https://www.epmc.top' }
     ],
@@ -109,8 +109,15 @@ export default defineConfig({
               { text: '服主写的古文', link: '/about/essay' }
             ]
           },
-          { text: '一周年庆特别公告', link: '/anniversary', },
-          { text: 'API开放文档', link: '/api' }
+          {
+            text: '开发者文档',
+            collapsed: true,
+            items: [
+              { text: '上传图片到玩家图册', link: '/dev/image_upload' },
+              { text: 'API开放文档', link: '/dev/api' },
+            ]
+          },
+          { text: '一周年庆特别公告', link: '/anniversary', }
         ]
       }
     ],
@@ -121,8 +128,6 @@ export default defineConfig({
       { icon: 'qq', link: 'https://qm.qq.com/q/DDHVYsSfB0' },
       { icon: 'bilibili', link: 'https://space.bilibili.com/8409405' },
       { icon: 'kuaishou', link: 'https://www.kuaishou.com/profile/3xth2cp4jf5ha6c' },
-      { icon: 'facebook', link: 'https://www.facebook.com/system_mini' },
-      { icon: 'twitch', link: 'https://www.twitch.tv/system_mini' },
       { icon: 'modrinth', link: 'https://modrinth.com/organization/endlesspixel-studio' }
     ],
 
