@@ -1,2 +1,6 @@
 # 整合包说明
-详见: [https://raw.githubusercontent.com/EndlessPixel/EndlessPixel-Modpack/refs/heads/main/README.md](sslocal://flow/file_open?url=https%3A%2F%2Fraw.githubusercontent.com%2FEndlessPixel%2FEndlessPixel-Modpack%2Frefs%2Fheads%2Fmain%2FREADME.md&flow_extra=eyJsaW5rX3R5cGUiOiJjb2RlX2ludGVycHJldGVyIn0=)
+
+EndlessPixel 整合包的完整介绍、版本支持、系统要求、更新日志、下载方式与已知问题，
+请查看 GitHub 官方 README：
+
+https://github.com/EndlessPixel/EndlessPixel-Modpack/blob/main/README.md
