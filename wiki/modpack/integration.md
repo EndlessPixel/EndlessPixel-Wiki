@@ -1,2 +1,2 @@
 # 整合包说明
-详见: [https://raw.githubusercontent.com/EndlessPixel/EndlessPixel-Modpack/refs/heads/main/README.md](sslocal://flow/file_open?url=https%3A%2F%2Fraw.githubusercontent.com%2FEndlessPixel%2FEndlessPixel-Modpack%2Frefs%2Fheads%2Fmain%2FREADME.md&flow_extra=eyJsaW5rX3R5cGUiOiJjb2RlX2ludGVycHJldGVyIn0=)
+详见: [https://raw.githubusercontent.com/EndlessPixel/EndlessPixel-Modpack/refs/heads/main/README.md](https://raw.githubusercontent.com/EndlessPixel/EndlessPixel-Modpack/refs/heads/main/README.md)
