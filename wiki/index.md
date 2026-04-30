@@ -12,6 +12,6 @@ hero:
       link: /docs
     - theme: alt
       text: 返回官网
-      link: https://www.endlesspixel.cn/
+      link: https://www.epmc.top
 ---
 
