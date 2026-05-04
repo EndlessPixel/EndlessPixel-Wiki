@@ -1,5 +1,11 @@
-*.md linguist-detectable
-*.mts linguist-detectable
-*.ts linguist-detectable
-*.json linguist-detectable
-*.yml linguist-detectable
+*.md linguist-detectable=true
+*.mts linguist-detectable=true
+*.ts linguist-detectable=true
+*.json linguist-detectable=true
+*.yml linguist-detectable=true
+*.md linguist-hidden=false
+*.ts linguist-hidden=false
+*.mts linguist-hidden=false
+*.yml linguist-hidden=false
+*.json linguist-hidden=false
+*.vue linguist-hidden=false
