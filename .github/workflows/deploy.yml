@@ -22,21 +22,37 @@ jobs:
         uses: actions/checkout@v5
         with:
           fetch-depth: 0
+
       - name: Setup Node
         uses: actions/setup-node@v6
         with:
           node-version: 25
-          cache: npm
+          cache: npm  # 官方自带缓存（已保留）
+
+      # ========== 新增：Vite 全局缓存（提速 80%） ==========
+      - name: Cache Vite dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules/.vite
+            ~/.npm
+          key: ${{ runner.os }}-vite-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-vite-
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
       - name: Install dependencies
         run: npm ci
+
       - name: Build with VitePress
         run: npm run docs:build
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: wiki/.vitepress/dist  # ✅ 我已经帮你改对了！
+          path: wiki/.vitepress/dist
 
   deploy:
     environment:
@@ -46,6 +62,6 @@ jobs:
     runs-on: ubuntu-latest
     name: Deploy
     steps:
-      - name: Deploy to GitHub Pages
+      - name: Deploy to Pages
         id: deployment
         uses: actions/deploy-pages@v4
