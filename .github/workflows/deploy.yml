@@ -3,7 +3,14 @@ name: Deploy VitePress site to Pages
 on:
   push:
     branches: [main]
+    paths:
+      - 'wiki/**'
+      - 'package.json'
+      - 'package-lock.json'
   workflow_dispatch:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 permissions:
   contents: read
@@ -19,29 +26,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       - name: Setup Node
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v4
         with:
-          node-version: 25
-          cache: npm  # 官方自带缓存（已保留）
-
-      # ========== 新增：Vite 全局缓存（提速 80%） ==========
-      - name: Cache Vite dependencies
-        uses: actions/cache@v4
-        with:
-          path: |
-            node_modules/.vite
-            ~/.npm
-          key: ${{ runner.os }}-vite-${{ hashFiles('package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-vite-
+          node-version: 24
+          cache: npm
 
       - name: Setup Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
 
       - name: Install dependencies
         run: npm ci
