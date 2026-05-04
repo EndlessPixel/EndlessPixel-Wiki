@@ -1,2 +1,5 @@
 *.md linguist-detectable
 *.mts linguist-detectable
+*.ts linguist-detectable
+*.json linguist-detectable
+*.yml linguist-detectable
