@@ -5,39 +5,23 @@
 </template>
 
 <script setup lang="ts">
-import { useData, useRoute } from 'vitepress'
-import { computed, onMounted, watch, ref } from 'vue'
+import { useRoute } from 'vitepress'
+import { computed, ref, watch } from 'vue'
 
-const { page } = useData()
 const route = useRoute()
 const wordCount = ref(0)
 
+// 统计字数
 const countWords = () => {
-  // 等待页面渲染完成后，获取文章内容
-  const contentEl = document.querySelector('.vp-doc')
-  if (contentEl) {
-    // 去除所有 HTML 标签和空白字符，再统计长度
-    const text = contentEl.textContent || ''
-    wordCount.value = text.replace(/\s+/g, '').length
-  }
+  const text = document.querySelector('.vp-doc')?.textContent || ''
+  wordCount.value = text.replace(/\s+/g, '').length
 }
 
-onMounted(() => {
-  // 首次加载时统计
-  countWords()
-})
+// 路由切换时统计
+watch(() => route.path, countWords, { immediate: true })
 
-// 路由切换时重新统计
-watch(() => route.path, () => {
-  // 等待 DOM 更新完成
-  setTimeout(countWords, 0)
-})
-
-// 阅读时间（中文按 200 字/分钟计算）
-const readTime = computed(() => {
-  const time = Math.ceil(wordCount.value / 200)
-  return time < 1 ? 1 : time
-})
+// 阅读时间
+const readTime = computed(() => Math.max(1, Math.ceil(wordCount.value / 200)))
 </script>
 
 <style scoped>
