@@ -23,7 +23,8 @@
     3. 将鼠标悬浮在Add file按钮上，然后点击**Upload files**按钮。
     4. 选择你要上传的图片文件。
     5. 等待图片上传完成。
-    6. 点击**Commit changes**按钮。
+    6. 填写**Commit message**，例如：`Add {your_image_name}`。（可选）
+    7. 点击**Commit changes**按钮。
 
 4. 编辑图片的元数据信息。
     1. 访问你 fork 的仓库页面。
@@ -50,7 +51,8 @@
       "sha256": "6F2CDF5A52D3152551CC1553E904C443CA3457C1D05E8ACF9FAFA55654E49CAD"
     },
     ```
-    4. 点击**Commit changes**按钮。
+    4. 填写**Commit message**，例如：`Add {your_image_name}`。（可选）
+    5. 点击**Commit changes**按钮。
 
 5. 创建一个Pull Request，将你 fork 的仓库合并到 **EndlessPixel/EndlessPixel-Player-Image** 仓库。
     1. 访问你 fork 的仓库页面。
@@ -58,6 +60,9 @@
     > This branch is 2 commits ahead of EndlessPixel/EndlessPixel-Player-Image:main.
     3. 点击**Contribute**按钮，在悬浮窗中点击**Create pull request**按钮。
     4. 填写Pull Request的标题和描述。
+    例如：
+    > Title: Add {your_image_name}
+    > Description: Add {your_image_name} to the gallery.
     5. 点击**Create pull request**按钮。
 
 6. 等待 **EndlessPixel** 团队审核你的 Pull Request。
@@ -107,36 +112,64 @@ git push
 
 ## 其他教程
 
+### 我无法访问GitHub怎么办？
+1. 这是国内网络问题，可以不停的刷新，有概率可以进去。
+2. 使用加速器工具 比如 Steam++ Steamcommunity 302 等，在加速规则中选择 GitHub 也可以访问。
+
 ### 如何计算sha256哈希值？
 #### Windows
+1. 使用Windows CMD计算sha256哈希值。
 ```batch:line-numbers
 certutil -hashfile {your_image_file_path} sha256
 ```
-
+2. 使用Windows PowerShell计算sha256哈希值。
 ```powershell:line-numbers
 Get-FileHash -Path {your_image_file_path} -Algorithm SHA256
 ```
 
 #### Linux/MacOS
+使用Linux bash计算sha256哈希值。
 ```bash:line-numbers
 sha256sum {your_image_file_path}
 ```
 
+#### VSCode
+安装Get File Checksum扩展，在编辑器右键你的图片文件，选择**Get File Checksum**，在展开的菜单中选择**SHA256**，点击**Get Checksum**按钮，即可查看图片的sha256哈希值，将其复制到剪贴板，删除前面的0x，即可得到你所需要的结果。
+
 ### 如何查看图片的元数据信息？
 #### Windows
 
-在文件资源管理器中打开图片文件，点击**属性**按钮，即可查看图片的元数据信息。
+1. 在文件资源管理器中打开图片文件，点击**属性**按钮，即可查看图片的元数据信息。
+
+2. 如果你是Windows无桌面环境，比如Windows Server，可以使用以下命令：
+```powershell:line-numbers
+Get-ItemProperty -Path {your_image_file_path} -Name * | Select-Object -Property Name, Value
+```
 
 #### Linux/MacOS
 
-右键点击图片文件，选择**显示信息**，即可查看图片的元数据信息。
+1. Linux
+    1. Linux有桌面环境，可以在文件资源管理器中打开图片文件，点击**属性**按钮，即可查看图片的元数据信息。
 
-如果是无桌面环境，可以使用以下命令：
-```bash:line-numbers
-exiftool {your_image_file_path}
-```
+    2. 如果你是Linux无桌面环境，比如Ubuntu Server，可以使用以下命令：
+    ```bash:line-numbers
+    exiftool {your_image_file_path}
+    ```
+
+2. MacOS
+    1. 在Finder中右键点击图片文件，选择**显示信息**，即可查看图片的元数据信息。
+
+### 为什么我在同步更改时会显示502错误？
+这通常是由于 GitHub 服务器临时故障导致的。你可以稍后重试，或者联系 GitHub 支持。
+
+### 为什么会提示我无权向次仓库提交更改？
+你可能克隆了 **EndlessPixel/EndlessPixel-Player-Image** 仓库，而不是你 fork 的仓库，因此没有权限提交更改到 **EndlessPixel/EndlessPixel-Player-Image** 仓库。
 
 ### 我不想用这么麻烦的方法，是否有其他方法？
 有，你可以使用以下方法：
 
 直接把你要上传的图片通过QQ发送给 **system_mini**，并提供你的玩家名和拍照时间，**system_mini** 看到后会帮你上传图片到玩家图册。
+
+请注意辨别 **system_mini** 的QQ号 **1343352337** `大号`和 **3319182533** `小号`，避免冒充人员。
+
+此服务完全免费，不涉及任何费用，如果他让你支付费用，请忽略，并核对QQ号。
