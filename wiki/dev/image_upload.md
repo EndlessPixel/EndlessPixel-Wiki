@@ -13,7 +13,7 @@
 > 此处不介绍，请自行参阅[https://docs.github.com/zh/get-started/start-your-journey/creating-an-account-on-github](https://docs.github.com/zh/get-started/start-your-journey/creating-an-account-on-github)。
 
 2. fork **EndlessPixel/EndlessPixel-Player-Image** 仓库到你的 **GitHub** 账号下。
-    1. 访问https://github.com/EndlessPixel/EndlessPixel-Player-Image/fork
+    1. 访问[https://github.com/EndlessPixel/EndlessPixel-Player-Image/fork](https://github.com/EndlessPixel/EndlessPixel-Player-Image/fork)
     2. 如果你需要修改仓库名称，请在 fork 页面下修改**Repository name**项。
     3. 点击**Create fork**按钮。
 
