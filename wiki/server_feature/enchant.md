@@ -1,14 +1,143 @@
+<style>
+/* ========== 特色附魔系统 专属独立样式 仅本页生效 ========== */
+.enchant-page {
+  max-width: 920px;
+  margin: 2rem auto;
+  padding: 0 18px;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* 主标题 星芒紫晶渐变 */
+.enchant-page h1 {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 800;
+  margin: 2.5rem 0 2rem;
+  background: linear-gradient(120deg, #7c3aed, #a78bfa);
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 10px rgba(124,58,237,0.2);
+}
+
+/* 二级标题 符文粗侧边 + 幻紫渐变衬底 */
+.enchant-page h2 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 3rem 0 1.5rem;
+  padding: 14px 20px;
+  border-left: 6px solid #7c3aed;
+  background: linear-gradient(90deg, rgba(124,58,237,0.12), transparent);
+  border-radius: 0 12px 12px 0;
+  color: var(--vp-c-text-1);
+}
+
+/* 正文魔纹卡片 暗紫磨砂立体 */
+.enchant-card {
+  background: rgba(124,58,237,0.06);
+  padding: 2rem;
+  border-radius: 18px;
+  border: 1.5px solid rgba(124,58,237,0.15);
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 16px rgba(124,58,237,0.08);
+  transition: all 0.25s ease;
+}
+.enchant-card:hover {
+  box-shadow: 0 6px 22px rgba(124,58,237,0.14);
+  border-color: rgba(124,58,237,0.22);
+}
+
+.enchant-card p {
+  line-height: 1.9;
+  font-size: 16.5px;
+  color: var(--vp-c-text-2);
+  margin: 0 0 1rem;
+}
+.enchant-card ul {
+  margin: 1rem 0 0;
+  padding-left: 1.5rem;
+}
+.enchant-card li {
+  margin: 0.6rem 0;
+  line-height: 1.75;
+  font-size: 16px;
+}
+
+/* 高亮文字 符文紫 */
+.enchant-page strong {
+  color: #a78bfa;
+  font-weight: 700;
+  text-shadow: 0 1px 4px rgba(167,139,250,0.15);
+}
+
+/* 全局附魔表格 圆角全包+渐变表头 */
+.enchant-page table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 18px;
+  overflow: hidden;
+  margin: 1.5rem 0 2.5rem;
+  box-shadow: 0 4px 18px rgba(124,58,237,0.1);
+}
+.enchant-page th {
+  background: linear-gradient(90deg, #7c3aed, #8b5cf6);
+  color: #fff;
+  padding: 14px 16px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 15.5px;
+}
+.enchant-page td {
+  padding: 12px 16px;
+  background: rgba(124,58,237,0.04);
+  border-bottom: 1px solid rgba(124,58,237,0.1);
+  font-size: 15.5px;
+  line-height: 1.7;
+}
+.enchant-page tr:nth-child(even) td {
+  background: rgba(124,58,237,0.07);
+}
+
+/* 符文渐变分割线 */
+.enchant-page hr {
+  border: none;
+  height: 1.5px;
+  background: linear-gradient(to right, transparent, #7c3aed50, #a78bfa40, transparent);
+  margin: 3.5rem 0;
+}
+
+/* 深色模式 秘术暗化氛围 */
+html.dark .enchant-card {
+  background: rgba(124,58,237,0.12);
+  border-color: rgba(124,58,237,0.25);
+  box-shadow: 0 4px 16px rgba(124,58,237,0.15);
+}
+html.dark .enchant-page td {
+  background: rgba(255,255,255,0.03);
+  border-color: rgba(255,255,255,0.08);
+}
+html.dark .enchant-page tr:nth-child(even) td {
+  background: rgba(255,255,255,0.05);
+}
+</style>
+
+<div class="enchant-page">
+
 # 特色附魔系统
 
 ## 突破等级限制的极致附魔
-本服务器的无限附魔系统彻底打破传统附魔等级桎梏，原版附魔（锋利、保护等）可拉满至255级：
+<div class="enchant-card">
+本服务器的无限附魔系统彻底打破传统附魔等级桎梏，原版附魔（锋利、保护等）可拉满至<strong>255级</strong>：
 - 255级锋利剑 → 秒杀高阶怪物
 - 255级保护甲 → 近乎全伤害免疫
 
 全原版附魔无互斥、可自由堆叠，支持自定义专属毕业装备，玩法完全自由。
+</div>
 
 ## 鞘翅保护附魔
+<div class="enchant-card">
 鞘翅现在已经支持了保护类附魔。
+</div>
 
 ## 新增自定义附魔
 | 附魔中文名 | 适配装备 | 核心效果 | 等级上限 |
@@ -71,8 +200,10 @@
 | 精准采集 | 采集工具 | 挖掘方块直接掉落本体方块，而非常规掉落物 | 255级 |
 | 亡灵杀手 | 剑、斧 | 对亡灵生物造成高额额外攻击伤害 | 255级 |
 | 灵魂疾行 | 靴子 | 大幅提升在灵魂沙、灵魂土上的移动速度 | 255级 |
-| 横扫之刃 | 剑 | 大幅扩大并提升横扫攻击的伤害范围与威力 | 255级 |
+| 横扫之刃 | 剑 | 255级 |
 | 迅捷潜行 | 护腿 | 大幅提高潜行、爬行状态下的移动速度 | 255级 |
 | 荆棘 | 盔甲 | 被敌方攻击时，自动反弹伤害给攻击者 | 255级 |
 | 耐久 | 所有可损耗装备 | 大幅降低装备耐久消耗损耗的概率 | 255级 |
 | 风爆 | 重锤 | 重锤下落命中目标触发风爆，将自身向上弹起 | 255级 |
+
+</div>
