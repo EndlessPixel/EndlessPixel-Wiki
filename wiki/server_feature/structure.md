@@ -163,11 +163,10 @@ html.dark .structure-page tr:nth-child(even) td {
 ### 已安装的结构重制数据包清单
 | 数据包名称 | 对应结构 |
 | --- | --- |
-| DnT Desert Temple Overhaul v2.1 | 沙漠金字塔 |
-| DnT Jungle Temple Overhaul v2.1 | 丛林金字塔 |
-| DnT Mineshaft Overhaul v1 | 废弃矿井（据点） |
-| DnT Nether Fortress Overhaul v3.1 | 下界堡垒 |
-| DnT Ocean Monument Overhaul v2.2 | 海底神殿 |
-| Enchanted Golden Apple Addition | 附魔金苹果相关补充（可选标注） |
+| DnT Desert Temple Overhaul | 沙漠金字塔 |
+| DnT Jungle Temple Overhaul | 丛林金字塔 |
+| DnT Mineshaft Overhaul | 废弃矿井（据点） |
+| DnT Nether Fortress Overhaul | 下界堡垒 |
+| DnT Ocean Monument Overhaul | 海底神殿 |
 
 </div>
