@@ -1,6 +1,5 @@
 <script setup>
-import {
-  VPTeamPage, VPTeamPageTitle, VPTeamMembers, VPTeamPageSection } from 'vitepress/theme'
+import { VPTeamPage, VPTeamPageTitle, VPTeamMembers, VPTeamPageSection } from 'vitepress/theme'
 
 // 核心团队
 const core = [
@@ -39,11 +38,9 @@ const core = [
   }
 ]
 </script>
-<VPTeamPage>
-  <VPTeamPageSection>
-    <template #title>我们的团队</template>
-    <template #members>
-      <VPTeamMembers size="medium" :members="core" />
-    </template>
-  </VPTeamPageSection>
-</VPTeamPage>
+# 核心团队
+<VPTeamPageSection>
+  <template #members>
+    <VPTeamMembers size="medium" :members="core" />
+  </template>
+</VPTeamPageSection>
