@@ -1,8 +1,12 @@
-name: Deploy VitePress
+name: Deploy VitePress site to Pages
+
 on:
   push:
     branches: [main]
-    paths: ['wiki/**', 'package.json', 'package-lock.json']
+    paths:
+      - 'wiki/**'
+      - 'package.json'
+      - 'package-lock.json'
   workflow_dispatch:
 
 permissions:
@@ -15,19 +19,39 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build-deploy:
+  build:
     runs-on: ubuntu-latest
-    environment: github-pages
     steps:
-      - uses: actions/checkout@v6
-        with: { fetch-depth: 0 }
-      - uses: actions/setup-node@v4
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: 24
           cache: npm
-      - run: npm ci
-      - run: npm run docs:build -- --clean-cache
-      - uses: peaceiris/actions-gh-pages@v4
+
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Build with VitePress
+        run: npm run docs:build -- --clean-cache
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: wiki/.vitepress/dist
+          path: wiki/.vitepress/dist
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    runs-on: ubuntu-latest
+    name: Deploy
+    steps:
+      - name: Deploy to Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
