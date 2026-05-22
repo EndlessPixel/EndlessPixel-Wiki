@@ -1,4 +1,4 @@
-# EndlessPixel API开放文档 <Badge type="warning" text="beta" />
+# EndlessPixel API开放文档 <Badge type="warning">beta</Badge>
 ::: tip
 API开放文档是服务器提供的API接口文档，用于开发人员调用服务器的功能和查询服务器的状态。
 :::
@@ -252,8 +252,11 @@ API开放文档是服务器提供的API接口文档，用于开发人员调用�
 {
   // 平均延迟(ms)
   "avg": 1.25,
+  // 目标主机域名
   "host": "cn.bing.com",
+  // 目标主机IP地址
   "ip": "142.250.191.78",
+  // 服务器位置
   "location": "美国",
   // 最大延迟(ms)
   "max": 2.1,
@@ -391,8 +394,8 @@ API开放文档是服务器提供的API接口文档，用于开发人员调用�
 ```json:line-numbers
 [
   {
-    // 图片直链地址
-    "path": "https://raw.githubusercontent.com/EndlessPixel/EndlessPixel-Player-Image/main/assets/huge_2026-02-17_16.34.17.png",
+    // 截图文件路径
+    "path": "assets/huge_2026-02-17_16.34.17.png",
     // 上传玩家游戏名称
     "player": "system_mini",
     // 截图拍摄时间（标准日期格式）
