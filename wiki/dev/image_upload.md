@@ -32,7 +32,7 @@
     3. 在文件assets.json中添加以下内容：
     ```json:line-numbers
     {
-      "path": "https://raw.githubusercontent.com/EndlessPixel/EndlessPixel-Player-Image/main/assets/{your_image_name}",
+      "path": "assets/{your_image_name}",
       "player": "{your_player_name}",
       "date": "{your_shoot_date}",
       "resolution": "{your_image_resolution}",
@@ -43,7 +43,7 @@
     **示例**
     ```json:line-numbers
     {
-      "path": "https://raw.githubusercontent.com/EndlessPixel/EndlessPixel-Player-Image/main/assets/huge_2026-02-17_16.34.17.png",
+      "path": "assets/huge_2026-02-17_16.34.17.png",
       "player": "system_mini",
       "date": "2026-02-17 16:34:17",
       "resolution": "3840x2160",
