@@ -1,25 +1,33 @@
-name: Deploy VitePress (Fastest)
-
+name: Deploy VitePress
 on:
   push:
     branches: [main]
     paths: ['wiki/**', 'package.json', 'package-lock.json']
+  workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest-xl
+  build-deploy:
+    runs-on: ubuntu-latest
+    environment: github-pages
     steps:
       - uses: actions/checkout@v6
+        with: { fetch-depth: 0 }
       - uses: actions/setup-node@v4
-        with: { node-version: 24, cache: npm }
-      - run: npm ci --ignore-scripts
-      - run: npm run docs:build
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run docs:build -- --clean-cache
       - uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: wiki/.vitepress/dist
-          disable_no_jekyll: true
