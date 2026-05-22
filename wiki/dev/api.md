@@ -1,4 +1,4 @@
-# EndlessPixel API开放文档 <Badge type="warning">beta</Badge>
+# EndlessPixel API开放文档 <Badge type="warning" text="beta" />
 ::: tip
 API开放文档是服务器提供的API接口文档，用于开发人员调用服务器的功能和查询服务器的状态。
 :::
