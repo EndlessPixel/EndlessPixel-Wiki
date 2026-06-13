@@ -267,7 +267,7 @@ API开放文档是服务器提供的API接口文档，用于开发人员调用�
 
 请求失败，参数无效或目标不可达。前端可直接展示 message 字段。 <Badge type="danger" text="400" />
  **可能的原因**:
- - 无法解析主机: host 参数是一个无效的域名或IP地址。
+ - 无法解析主机: 传入的域名/IP地址是一个无效的域名或IP地址。
    ```json:line-numbers
    {
        "code": "INVALID_PARAMETER",
