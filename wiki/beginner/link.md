@@ -1,6 +1,6 @@
 # 相关链接
 
-官方网站: [https://www.endlesspixel.cn/](https://www.endlesspixel.cn/)
+官方网站: [https://www.epmc.top/](https://www.epmc.top/)
 
 快手: [https://www.kuaishou.com/profile/3xth2cp4jf5ha6c](https://www.kuaishou.com/profile/3xth2cp4jf5ha6c)
 
@@ -13,8 +13,6 @@ Gitee: [https://gitee.com/system_mini](https://gitee.com/system_mini)
 Discord: [https://discord.gg/k63hRWt3fF](https://discord.gg/k63hRWt3fF)
 
 QQ: [https://qm.qq.com/cgi-bin/qm/qr?k=870594910](https://qm.qq.com/cgi-bin/qm/qr?k=870594910)
-
-Facebook：[https://www.facebook.com/system_mini/](https://www.facebook.com/system_mini/)
 
 Twitch: [https://www.twitch.tv/system_mini](https://www.twitch.tv/system_mini)
 
@@ -37,5 +35,7 @@ Modrinth: [https://www.modrinth.com/server/ep](https://www.modrinth.com/server/e
 Mcgod: [https://mcgodx.com/servers/427/](https://mcgodx.com/servers/427/)
 
 Official Minecraft Server List: [https://findmcserver.com/server/6q0eAy03VM](https://findmcserver.com/server/6q0eAy03VM)
+
+McServ: [https://mcserv.org/cn/servers/ep](https://mcserv.org/cn/servers/ep)
 
 GitCity: [https://www.thegitcity.com/dev/endlesspixel](https://www.thegitcity.com/dev/endlesspixel)
