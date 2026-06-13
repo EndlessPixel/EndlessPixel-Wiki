@@ -49,12 +49,13 @@ export default defineConfig({
           {
             text: '服务器指令', collapsed: false, items: [
               { text: '登录与注册', link: '/server_common/login' },
-              { text: '粘液科技', link: '/server_common/slimefun' },
+              { text: '自杀', link: '/server_common/killme' },
               { text: '传送', link: '/server_common/tp' },
+              { text: '深渊', link: '/server_common/void' },
+              { text: '领地', link: '/server_common/dominion' },
               { text: '皮肤', link: '/server_common/skin' },
               { text: '技能', link: '/server_common/skill' },
-              { text: '领地', link: '/server_common/dominion' },
-              { text: '自杀', link: '/server_common/killme' },
+              { text: '粘液科技', link: '/server_common/slimefun' },
               { text: '福利', link: '/server_common/welfare' }
             ]
           },
