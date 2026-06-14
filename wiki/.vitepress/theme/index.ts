@@ -4,6 +4,7 @@ import WordCount from './WordCount.vue'
 import Layout from './Layout.vue'
 
 export default {
+  extends: DefaultTheme,
   ...DefaultTheme,
   Layout,
 
