@@ -117,7 +117,17 @@ export default defineConfig({
             collapsed: true,
             items: [
               { text: '上传图片到玩家图册', link: '/dev/image_upload' },
-              { text: 'API开放文档', link: '/dev/api' },
+              {
+                text: 'API文档',
+                collapsed: true,
+                link: '/dev/api',
+                items: [
+                  { text: '基础API接口', link: '/dev/api_docs/api' },
+                  { text: 'AI 客服', link: '/dev/api_docs/ai_customer_service' },
+                  { text: '服务器硬件信息', link: '/dev/api_docs/hardware_information' },
+                  { text: '愚人节整蛊接口', link: '/dev/api_docs/fool' }
+                ]
+              }
             ]
           },
           { text: '一周年庆特别公告', link: '/anniversary', }
