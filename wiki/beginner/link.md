@@ -4,6 +4,8 @@
 
 快手: [https://www.kuaishou.com/profile/3xth2cp4jf5ha6c](https://www.kuaishou.com/profile/3xth2cp4jf5ha6c)
 
+爱发电: [https://www.ifdian.net/a/system_mini](https://www.ifdian.net/a/system_mini)
+
 Bilibili: [https://space.bilibili.com/3546799478409405](https://space.bilibili.com/3546799478409405)
 
 GitHub: [https://github.com/EndlessPixel](https://github.com/EndlessPixel)
