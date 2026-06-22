@@ -1,6 +1,6 @@
 # 相关链接
 
-官方网站: [https://www.epmc.top/](https://www.epmc.top/)
+官方网站: [https://www.endlesspixel.cn/](https://www.endlesspixel.cn/)
 
 快手: [https://www.kuaishou.com/profile/3xth2cp4jf5ha6c](https://www.kuaishou.com/profile/3xth2cp4jf5ha6c)
 

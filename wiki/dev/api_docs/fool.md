@@ -1,10 +1,10 @@
 ### 愚人节整蛊接口
 
-<Badge type="tip" text="GET" /> `https://www.epmc.top/api/fool`
+<Badge type="tip" text="GET" /> `https://www.endlesspixel.cn/api/fool`
 
 <br>
 
-<Badge type="warning" text="POST" /> `https://www.epmc.top/api/fool`
+<Badge type="warning" text="POST" /> `https://www.endlesspixel.cn/api/fool`
 
 ::: tip
 **这是一个纯整蛊娱乐接口**，固定返回 **HTTP 418 I'm a teapot** 状态码，用于愚人节趣味互动，**无任何实际业务功能**。
@@ -159,17 +159,17 @@
 
 **GET 请求**
 ```bash
-curl -X GET "https://www.epmc.top/api/fool"
+curl -X GET "https://www.endlesspixel.cn/api/fool"
 ```
 
 **GET 请求（指定参数）**
 ```bash
-curl -X GET "https://www.epmc.top/api/fool?seed=12345&mood=happy"
+curl -X GET "https://www.endlesspixel.cn/api/fool?seed=12345&mood=happy"
 ```
 
 **POST 请求**
 ```bash
-curl -X POST "https://www.epmc.top/api/fool" \
+curl -X POST "https://www.endlesspixel.cn/api/fool" \
   -H "Content-Type: application/json" \
   -d '{"anything": "tea please"}'
 ```
@@ -179,7 +179,7 @@ curl -X POST "https://www.epmc.top/api/fool" \
 ```javascript
 // GET 请求
 const getPrank = async () => {
-  const response = await fetch('https://www.epmc.top/api/fool');
+  const response = await fetch('https://www.endlesspixel.cn/api/fool');
   const data = await response.json();
   console.log('HTTP Status:', response.status); // 418
   console.log('Teapot says:', data.message);
@@ -187,7 +187,7 @@ const getPrank = async () => {
 
 // POST 请求
 const postPrank = async () => {
-  const response = await fetch('https://www.epmc.top/api/fool', {
+  const response = await fetch('https://www.endlesspixel.cn/api/fool', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ serious: 'business' })

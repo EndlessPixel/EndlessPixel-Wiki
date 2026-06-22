@@ -1,6 +1,6 @@
 ### AI 客服
 
-<Badge type="warning" text="POST" /> `https://www.epmc.top/api/ai/chat`
+<Badge type="warning" text="POST" /> `https://www.endlesspixel.cn/api/ai/chat`
 
 请求类型：`application/json`
 
@@ -114,7 +114,7 @@ data: [DONE]
 
 ## 四、可用模型列表
 
-<Badge type="tip" text="GET" /> `https://www.epmc.top/api/ai/models`
+<Badge type="tip" text="GET" /> `https://www.endlesspixel.cn/api/ai/models`
 
 获取当前可用的所有模型列表，返回格式遵循 OpenAI API 规范。
 

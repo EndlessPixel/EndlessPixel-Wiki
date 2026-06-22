@@ -1,6 +1,6 @@
 ### 查询EndlessPixel服务器在线状态
 
-<Badge type="tip" text="GET" /> `https://www.epmc.top/api/mcserver/epmc`
+<Badge type="tip" text="GET" /> `https://www.endlesspixel.cn/api/mcserver/epmc`
 
 ::: tip
 此接口返回结果与 [api.mcsrvstat.us](https://api.mcsrvstat.us/) 相同，请按照官方文档进行解析。
@@ -25,7 +25,7 @@
 
 ### 查询EndlessPixel服务器ping值
 
-<Badge type="tip" text="GET" /> `https://www.epmc.top/api/ping/epmc`
+<Badge type="tip" text="GET" /> `https://www.endlesspixel.cn/api/ping/epmc`
 
 测试 EndlessPixel 服务器的网络延迟，返回实时 ping 统计数据。
 
@@ -36,7 +36,7 @@
 ```json:line-numbers
 {
   // 目标主机域名
-  "host": "epmc.top",
+  "host": "mc.endlesspixel.cn",
   // 目标主机IP地址
   "ip": "142.250.191.78",
   // 服务器地理位置
@@ -50,10 +50,10 @@
 }
 ```
 
-**请求失败，参数无效或目标不可达** <Badge type="danger" text="400" />
+**请求失败，目标不可达** <Badge type="danger" text="400" />
 
 可能的原因：
-- 无法解析主机：传入的域名/IP地址无效
+- 无法解析主机：域名/IP地址无效
 
 ```json:line-numbers
 {
@@ -67,7 +67,7 @@
 ```json:line-numbers
 {
   "code": "INVALID_PARAMETER",
-  "message": "对主机 'epmc.top' 的 Ping 请求超时，目标可能不可达或防火墙已拦截。"
+  "message": "对主机 'mc.endlesspixel.cn' 的 Ping 请求超时，目标可能不可达或防火墙已拦截。"
 }
 ```
 
@@ -84,7 +84,7 @@
 
 ### 查询EndlessPixel官方网站状态信息
 
-<Badge type="tip" text="GET" /> `https://www.epmc.top/api/webstatus`
+<Badge type="tip" text="GET" /> `https://www.endlesspixel.cn/api/webstatus`
 
 检测 EndlessPixel 官方网站的可访问性。
 
@@ -141,7 +141,7 @@
 
 ### 查询无尽像素官方QQ群信息
 
-<Badge type="tip" text="GET" /> `https://www.epmc.top/api/qq/groupinfo`
+<Badge type="tip" text="GET" /> `https://www.endlesspixel.cn/api/qq/groupinfo`
 
 获取 EndlessPixel 官方 QQ 群的详细信息，包括群名称、成员数、群主、加群链接等。
 
@@ -194,7 +194,7 @@
 
 ### 查询EndlessPixel服务器玩家游戏截图列表
 
-<Badge type="tip" text="GET" /> `https://www.epmc.top/api/player/screenshot/list`
+<Badge type="tip" text="GET" /> `https://www.endlesspixel.cn/api/player/screenshot/list`
 
 获取 EndlessPixel 服务器全部玩家上传的游戏截图元数据列表，包含图片地址、上传玩家、拍摄时间、分辨率、文件大小、SHA256 校验值等完整信息。
 
