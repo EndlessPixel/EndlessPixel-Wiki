@@ -10,7 +10,7 @@ export default defineConfig({
   lastUpdated: true,
   cleanUrls: true,
   sitemap: {
-    hostname: 'https://wiki.epmc.top'
+    hostname: 'https://wiki.endlesspixel.cn'
   },
   markdown: {
     container: {
@@ -28,8 +28,8 @@ export default defineConfig({
       { text: '首页', link: '/' },
       { text: '文档', link: '/docs' },
       { text: 'API开放文档', link: '/dev/api' },
-      { text: '服务器状态', link: 'https://sys.epmc.top' },
-      { text: '返回官网', link: 'https://www.epmc.top' }
+      { text: '服务器状态', link: 'https://sys.epmc.qzz.io:18000' },
+      { text: '返回官网', link: 'https://www.endlesspixel.cn' }
     ],
 
     sidebar: [

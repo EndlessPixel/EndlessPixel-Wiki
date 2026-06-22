@@ -1,6 +1,6 @@
 ### 查询EndlessPixel服务器硬件信息
 
-<Badge type="tip" text="GET" /> `https://www.epmc.top/api/hardware-info`
+<Badge type="tip" text="GET" /> `https://www.endlesspixel.cn/api/hardware-info`
 
 获取 EndlessPixel 服务器的硬件配置信息，包括 CPU、内存、磁盘、GPU 和网络适配器的详细规格。
 
@@ -93,7 +93,7 @@
 
 ### 查询EndlessPixel服务器硬件实时数据
 
-<Badge type="tip" text="GET" /> `https://www.epmc.top/api/real-time-data`
+<Badge type="tip" text="GET" /> `https://www.endlesspixel.cn/api/real-time-data`
 
 获取 EndlessPixel 服务器的实时监控数据，包括 CPU、内存、GPU 使用率、网络速度、系统负载等时序数据。
 
@@ -190,7 +190,7 @@
 
 ### 查询服务器磁盘占用信息
 
-<Badge type="tip" text="GET" /> `https://www.epmc.top/api/disk-usage`
+<Badge type="tip" text="GET" /> `https://www.endlesspixel.cn/api/disk-usage`
 
 获取 EndlessPixel 服务器各磁盘分区的使用情况。
 
