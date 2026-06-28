@@ -84,7 +84,7 @@
 
 ```json:line-numbers
 {
-  "code": "INTERNAL_ERROR",
+  "code": 500,
   "message": "获取硬件信息失败，请稍后重试"
 }
 ```
@@ -181,7 +181,7 @@
 
 ```json:line-numbers
 {
-  "code": "INTERNAL_ERROR",
+  "code": 500,
   "message": "获取实时数据失败，请稍后重试"
 }
 ```
@@ -242,7 +242,7 @@
 
 ```json:line-numbers
 {
-  "code": "INTERNAL_ERROR",
+  "code": 500,
   "message": "获取磁盘信息失败，请稍后重试"
 }
 ```
@@ -251,6 +251,6 @@
 
 ## 通用错误码说明
 
-| HTTP状态码 | 错误码 | 说明 |
-|-----------|--------|------|
-| 500 | INTERNAL_ERROR | 服务器内部错误，请稍后重试 |
+| HTTP状态码 | 说明 |
+|---|---|
+| 500 | 服务器内部错误，请稍后重试 |
