@@ -2,9 +2,7 @@
 
 <Badge type="warning" text="POST" /> `https://www.endlesspixel.cn/api/ai/chat`
 
-请求类型：`application/json`
-
-响应类型：`text/event-stream`
+请求类型：`application/json` | 响应类型：`text/event-stream`
 
 ## 一、请求体结构
 
@@ -145,6 +143,7 @@ data: [DONE]
 - 包含 `instruct`、`chat` 等关键词的模型
 - 主流厂商的通用对话模型（如 Qwen、DeepSeek、Gemini 等）
 - 参数规模适中的模型（7B-80B 通常效果较好）
+- 模型来自第三方供应商，不保障模型质量和可用性，请自行评估。
 
 随意选择代码模型、嵌入模型、安全检测模型等专用模型可能导致回复质量不佳。
 
