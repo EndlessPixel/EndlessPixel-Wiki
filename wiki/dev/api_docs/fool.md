@@ -12,13 +12,6 @@
 每次请求都会随机生成不同文案、心情、错误、推荐仓库，几乎不会重复。
 :::
 
-#### 查询参数
-
-| 参数 | 类型 | 必填 | 说明 |
-|------|------|------|------|
-| seed | number | ❌ | 随机种子，相同种子返回相同整蛊内容（用于调试） |
-| mood | string | ❌ | 强制指定茶壶心情（可选：`happy`/`grumpy`/`chaotic`/`sleepy`） |
-
 ---
 
 ## 一、GET 请求
@@ -150,56 +143,9 @@
   }
 }
 ```
-
 ---
 
-## 三、请求示例
-
-### cURL
-
-**GET 请求**
-```bash
-curl -X GET "https://www.endlesspixel.cn/api/fool"
-```
-
-**GET 请求（指定参数）**
-```bash
-curl -X GET "https://www.endlesspixel.cn/api/fool?seed=12345&mood=happy"
-```
-
-**POST 请求**
-```bash
-curl -X POST "https://www.endlesspixel.cn/api/fool" \
-  -H "Content-Type: application/json" \
-  -d '{"anything": "tea please"}'
-```
-
-### JavaScript (fetch)
-
-```javascript
-// GET 请求
-const getPrank = async () => {
-  const response = await fetch('https://www.endlesspixel.cn/api/fool');
-  const data = await response.json();
-  console.log('HTTP Status:', response.status); // 418
-  console.log('Teapot says:', data.message);
-};
-
-// POST 请求
-const postPrank = async () => {
-  const response = await fetch('https://www.endlesspixel.cn/api/fool', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ serious: 'business' })
-  });
-  const data = await response.json();
-  console.log('POST prank:', data.post_prank);
-};
-```
-
----
-
-## 四、响应字段详解
+## 三、响应字段详解
 
 | 字段 | 类型 | 说明 |
 |------|------|------|
@@ -250,6 +196,4 @@ const postPrank = async () => {
 1. **纯娱乐用途**：本接口仅供愚人节趣味互动，**无任何实际业务功能**
 2. **固定状态码**：无论请求成功与否，均返回 **HTTP 418 I'm a teapot**
 3. **内容随机**：每次请求返回的内容均不同，几乎不会重复
-4. **支持参数**：可通过 `seed` 参数固定随机内容，便于调试
-5. **POST 无校验**：POST 请求不校验请求体内容，任意数据均可发送
-6. **无副作用**：接口不写入任何数据，不修改任何状态
+4. **无副作用**：接口不写入任何数据，不修改任何状态
