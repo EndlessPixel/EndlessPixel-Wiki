@@ -57,7 +57,7 @@
 
 ```json:line-numbers
 {
-  "code": "INVALID_PARAMETER",
+  "code": 400,
   "message": "无法解析主机 '无效的主机名'，请检查输入是否正确。"
 }
 ```
@@ -66,7 +66,7 @@
 
 ```json:line-numbers
 {
-  "code": "INVALID_PARAMETER",
+  "code": 400,
   "message": "对主机 'mc.endlesspixel.cn' 的 Ping 请求超时，目标可能不可达或防火墙已拦截。"
 }
 ```
@@ -75,7 +75,7 @@
 
 ```json:line-numbers
 {
-  "code": "SERVICE_BUSY",
+  "code": 429,
   "message": "Ping 服务正忙，请稍后再试。"
 }
 ```
@@ -87,12 +87,6 @@
 <Badge type="tip" text="GET" /> `https://www.endlesspixel.cn/api/webstatus`
 
 检测 EndlessPixel 官方网站的可访问性。
-
-#### 查询参数
-
-| 参数 | 类型 | 必填 | 说明 |
-|------|------|------|------|
-| url | string | ❌ | 目标URL，默认为 EndlessPixel 官网 |
 
 #### 返回示例
 
@@ -119,20 +113,11 @@
 }
 ```
 
-**请求参数无效** <Badge type="danger" text="400" />
-
-```json:line-numbers
-{
-  "code": "INVALID_ARGUMENT",
-  "message": "Missing or invalid 'url' parameter."
-}
-```
-
 **请求URL失败** <Badge type="danger" text="502" />
 
 ```json:line-numbers
 {
-  "code": "REQUEST_FAILED",
+  "code": 502,
   "message": "Failed to request the URL. It might be down or unreachable."
 }
 ```
@@ -227,7 +212,7 @@
 
 ```json:line-numbers
 {
-  "code": "INTERNAL_ERROR",
+  "code": 500,
   "message": "获取截图列表失败，请稍后重试"
 }
 ```
@@ -236,10 +221,9 @@
 
 ## 通用错误码说明
 
-| HTTP状态码 | 错误码 | 说明 |
-|-----------|--------|------|
-| 400 | INVALID_PARAMETER | 请求参数无效 |
-| 400 | INVALID_ARGUMENT | 参数缺失或格式错误 |
-| 429 | SERVICE_BUSY | 服务繁忙，触发限流 |
-| 500 | INTERNAL_ERROR | 服务器内部错误 |
-| 502 | REQUEST_FAILED | 上游请求失败 |
+| HTTP状态码 | 说明 |
+|---|---|
+| 400 | 请求参数无效 / 参数缺失或格式错误 |
+| 429 | 服务繁忙，触发限流 |
+| 500 | 服务器内部错误 |
+| 502 | 上游请求失败 |
