@@ -18,6 +18,8 @@ QQ: [https://qm.qq.com/cgi-bin/qm/qr?k=870594910](https://qm.qq.com/cgi-bin/qm/q
 
 Twitch: [https://www.twitch.tv/system_mini](https://www.twitch.tv/system_mini)
 
+Twitch/X: [https://x.com/system_mini](https://x.com/system_mini)
+
 YouTube: [https://www.youtube.com/channel/UCMhwQrCnysEi0z0PTB655Eg](https://www.youtube.com/channel/UCMhwQrCnysEi0z0PTB655Eg)
 
 Minecraft Servers Listing: [https://minecraft-servers-listing.com/endlesspixel/](https://minecraft-servers-listing.com/endlesspixel/)
