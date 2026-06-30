@@ -15,7 +15,7 @@ const core = [
       { icon: 'facebook', link: 'https://www.facebook.com/system_mini' },
       { icon: 'twitch', link: 'https://www.twitch.tv/system_mini' },
       { icon: 'youtube', link: 'https://www.youtube.com/channel/UCMhwQrCnysEi0z0PTB655Eg' },
-      { icon: 'modrinth', link: 'https://modrinth.com/user/EndlessPixel' }
+      { icon: 'modrinth', link: 'https://modrinth.com/user/EndlessPixel' },
       { icon: 'x', link: 'https://x.com/system_mini' }
     ]
   },
