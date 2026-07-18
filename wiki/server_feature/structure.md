@@ -146,27 +146,9 @@ html.dark .structure-page tr:nth-child(even) td {
 <div class="structure-card">
 此类建筑同样可通过 chunkbase 等坐标网站查询定位，所有原版建筑均已替换为自定义模型。
 
-- 沙漠金字塔（DnT Desert Temple Overhaul）
 - 末地城
-- 丛林金字塔（DnT Jungle Temple Overhaul）
 - 沼泽小屋
-- 据点（废弃矿井 DnT Mineshaft Overhaul、下界堡垒 DnT Nether Fortress Overhaul、海底神殿 DnT Ocean Monument Overhaul）
 </div>
 
----
-
-## 补充说明
-<div class="structure-card">
-本次结构更新主要由 **DnT 系列结构重制数据包** 实现，以及一些其他数据包，所有重制结构均严格遵循原版生成逻辑，不改变结构生成位置、不新增额外生物/loot，仅优化建筑外观与探索体验，完全兼容原版生存与坐标查询工具。
-</div>
-
-### 已安装的结构重制数据包清单
-| 数据包名称 | 对应结构 |
-| --- | --- |
-| DnT Desert Temple Overhaul | 沙漠金字塔 |
-| DnT Jungle Temple Overhaul | 丛林金字塔 |
-| DnT Mineshaft Overhaul | 废弃矿井（据点） |
-| DnT Nether Fortress Overhaul | 下界堡垒 |
-| DnT Ocean Monument Overhaul | 海底神殿 |
 
 </div>
