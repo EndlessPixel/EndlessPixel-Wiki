@@ -2,7 +2,7 @@
 
 > 如果你要查看玩家图册，请前往[https://www.endlesspixel.cn/gallery](https://www.endlesspixel.cn/gallery)查看玩家上传的图片。
 >
-> 如果你是要获取玩家图册的数据，请前往[查询EndlessPixel服务器玩家游戏截图列表 API](/dev/api#查询endlesspixel服务器玩家游戏截图列表)
+> 如果你是要获取玩家图册的数据，请前往[查询EndlessPixel服务器玩家游戏截图列表 API](/dev/api/api_docs#查询endlesspixel服务器玩家游戏截图列表)
 >
 > 这里仅介绍如何上传图片到玩家图册。
 
