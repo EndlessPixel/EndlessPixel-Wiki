@@ -4,9 +4,9 @@
 
 请求类型：`application/json` | 响应类型：`text/event-stream`
 
-## 一、请求体结构
+#### 一、请求体结构
 
-### 1. 首轮对话（无历史上下文）
+##### 1. 首轮对话（无历史上下文）
 ```json:line-numbers
 {
     "messages": [
@@ -20,7 +20,7 @@
 }
 ```
 
-### 2. 多轮上下文对话
+##### 2. 多轮上下文对话
 ```json:line-numbers
 {
     "messages": [
@@ -46,7 +46,7 @@
 }
 ```
 
-### 3. 指定模型（可选）
+##### 3. 指定模型（可选）
 ```json:line-numbers
 {
     "messages": [...],
@@ -63,16 +63,16 @@
 | messages[].senderName | string | ✅ | 前端展示昵称，固定填`用户`/`EPBot` |
 | model | string | ❌ | 指定使用的模型ID，不传则使用默认模型 |
 
-## 二、流式响应解析规则 + 精简真实分片示例
+#### 二、流式响应解析规则 + 精简真实分片示例
 
-### 响应格式规则
+##### 响应格式规则
 1. 每一行以 `data: ` 开头；
 2. `choices[0].delta.content` 是增量文字，需要不断拼接；
 3. `finish_reason: stop` = AI回答生成完毕；
 4. 末尾固定 `data: [DONE]` 代表整条请求彻底结束；
 5. 最后一块携带 `usage` 统计token消耗。
 
-### 真实分片示例（截取开头+结尾，省去海量重复中间块）
+##### 真实分片示例（截取开头+结尾，省去海量重复中间块）
 ```json:line-numbers
 data: {"id":"chatcmpl-8bb3505431ff5eb0","object":"chat.completion.chunk","created":1781421878,"model":"qwen/qwen3-next-80b-a3b-instruct","choices":[{"index":0,"delta":{"role":"assistant","content":""}}]}
 
@@ -87,13 +87,13 @@ data: {"id":"chatcmpl-8bb3505431ff5eb0","object":"chat.completion.chunk","create
 data: [DONE]
 ```
 
-### Token 消耗统计说明
+##### Token 消耗统计说明
 最后一条包含 `usage` 字段的数据块提供本次请求的Token统计：
 - `prompt_tokens`: 输入提示消耗的Token数
 - `completion_tokens`: 输出回复消耗的Token数  
 - `total_tokens`: 总消耗Token数
 
-## 三、错误对照表
+#### 三、错误对照表
 
 | 错误分类 | 触发条件 | 返回提示文本 |
 |---------|---------|-------------|
@@ -110,13 +110,13 @@ data: [DONE]
 | 模型参数无效 | 传入不支持的模型ID | 无效的模型参数 |
 | 未知内部异常 | 捕获其他未归类报错 | 服务异常，请稍后再试 |
 
-## 四、可用模型列表
+#### 四、可用模型列表
 
 <Badge type="tip" text="GET" /> `https://www.endlesspixel.cn/api/ai/models`
 
 获取当前可用的所有模型列表，返回格式遵循 OpenAI API 规范。
 
-### 响应示例
+#### 返回示例
 ```json:line-numbers
 {
     "data": [
@@ -138,7 +138,7 @@ data: [DONE]
 }
 ```
 
-### 模型使用建议
+##### 模型使用建议
 ⚠️ **并非所有模型都适合用于对话回复**，建议优先选择以下类型的模型：
 - 包含 `instruct`、`chat` 等关键词的模型
 - 主流厂商的通用对话模型（如 Qwen、DeepSeek、Gemini 等）
@@ -147,9 +147,9 @@ data: [DONE]
 
 随意选择代码模型、嵌入模型、安全检测模型等专用模型可能导致回复质量不佳。
 
-## 五、前端集成示例
+#### 五、前端集成示例
 
-### 发送请求（指定模型）
+##### 发送请求（指定模型）
 ```javascript
 const controller = new AbortController();
 
@@ -189,14 +189,14 @@ await fetchEventSource('/api/ai/chat', {
 });
 ```
 
-### 获取模型列表
+##### 获取模型列表
 ```javascript
 const response = await fetch('/api/ai/models');
 const { data: models } = await response.json();
 console.log('Available models:', models);
 ```
 
-## 六、注意事项
+#### 六、注意事项
 
 1. **流式响应处理**：需要持续拼接 `delta.content` 直到收到 `finish_reason: stop`
 2. **Token统计**：只在最后一条消息中包含 `usage` 字段

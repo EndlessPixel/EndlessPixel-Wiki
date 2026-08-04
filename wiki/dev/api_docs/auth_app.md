@@ -11,15 +11,15 @@
 接入过程分为两个阶段：**应用注册**（一次性）和 **登录集成**（每次登录）。
 :::
 
-## 一、注册 OAuth 应用
+#### 一、注册 OAuth 应用
 
-### 1.1 创建应用
+##### 1.1 创建应用
 
 1. 登录 EndlessPixel 官网，进入账号主页
 2. 点击用户名 → **「开发者选项」** → **OAuth APP**（`/profile/dev/oauth_app`）
 3. 点击 **「新建应用」**，填写应用名称和网站域名
 
-### 1.2 域名归属验证
+##### 1.2 域名归属验证
 
 1. 点击 **「开始验证域名」**，下载 `EndlessPixelOAuth.xml`
 2. 将文件放置于网站**静态文件根目录**，确保可通过公网 HTTPS 访问：
@@ -36,7 +36,7 @@
 
 3. 返回页面点击 **「验证」**，通过后状态更新为「已验证」
 
-### 1.3 获取应用凭证
+##### 1.3 获取应用凭证
 
 | 凭证 | 说明 | 安全级别 |
 |----|----|----|
@@ -47,7 +47,7 @@
 `client_secret` **仅展示一次**，之后不可再查看。请立即妥善保存，泄露后可在管理页面「重置密钥」。
 :::
 
-### 1.4 配置回调地址
+##### 1.4 配置回调地址
 
 在应用管理页面设置 `redirect_uri`：
 
@@ -57,9 +57,9 @@
 
 ---
 
-## 二、接入登录系统
+#### 二、接入登录系统
 
-### 2.1 流程总览
+##### 2.1 流程总览
 
 ```
 用户点击"EndlessPixel 登录"
@@ -69,7 +69,7 @@
   → 302 跳转到业务页面
 ```
 
-### 2.2 步骤一：生成 state + 发起授权请求
+##### 2.2 步骤一：生成 state + 发起授权请求
 
 **`state` 由你的系统生成**（非 EndlessPixel 下发），用于防 CSRF 和绑定登录会话。
 
@@ -101,7 +101,7 @@
 | `state` | ✅ | 本次生成的随机字符串 |
 | `scope` | ⚠️ | 可选，如 `profile`、`email` |
 
-### 2.3 步骤二：处理回调
+##### 2.3 步骤二：处理回调
 
 EndlessPixel 回调：
 
@@ -109,7 +109,7 @@ EndlessPixel 回调：
 GET /auth/endlesspixel/callback?code=xxx&state=yyy
 ```
 
-#### (1) 校验 state（⚠️ 最关键的安全步骤）
+###### (1) 校验 state（⚠️ 最关键的安全步骤）
 
 ```python
 received_state = request.query.get("state")
@@ -121,10 +121,10 @@ if received_state != expected_state:
     abort(400, "state 不匹配，疑似 CSRF 攻击")
 if now() > session.pop("oauth_state_expire"):
     abort(400, "state 已过期")
-# ✅ 校验通过
+    # ✅ 校验通过
 ```
 
-#### (2) 用 code 换取 access_token
+###### (2) 用 code 换取 access_token
 
 <Badge type="warning" text="POST" /> `https://www.endlesspixel.cn/oauth/token`
 
@@ -162,7 +162,7 @@ grant_type=authorization_code
 此请求必须由**服务端发起**，`client_secret` 绝不进前端代码或 URL。
 :::
 
-#### (3) 建立本地登录态
+###### (3) 建立本地登录态
 
 ```python
 user = find_or_create_user(
@@ -178,9 +178,9 @@ redirect("/dashboard")
 
 ---
 
-## 三、刷新与撤销
+#### 三、刷新与撤销
 
-### 3.1 刷新令牌
+##### 3.1 刷新令牌
 
 当 `access_token` 过期，使用 `refresh_token` 获取新令牌。
 
@@ -205,7 +205,7 @@ grant_type=refresh_token
 }
 ```
 
-### 3.2 撤销授权
+##### 3.2 撤销授权
 
 <Badge type="warning" text="POST" /> `https://www.endlesspixel.cn/oauth/revoke`
 
@@ -223,9 +223,9 @@ token={access_token 或 refresh_token}
 
 ---
 
-## 四、安全设计
+#### 四、安全设计
 
-### 4.1 核心原则
+##### 4.1 核心原则
 
 | 安全目标 | 实现方式 |
 |----|----|
@@ -235,11 +235,11 @@ token={access_token 或 refresh_token}
 | 防凭据泄露 | `client_secret` / `access_token` 仅服务端持有 |
 | 防开放重定向 | 回调地址白名单 + 跳转目标存 Session |
 
-### 4.2 `state` 设计哲学
+##### 4.2 `state` 设计哲学
 
 > `state` 由客户端生成，基于「**高熵随机 + 会话绑定 + 一次性使用**」的组合防护，在工程意义上可视为不可伪造。
 
-### 4.3 敏感信息处理规范
+##### 4.3 敏感信息处理规范
 
 | 信息 | 可出现在 URL | 可出现在前端 |
 |----|----|----|
@@ -251,9 +251,9 @@ token={access_token 或 refresh_token}
 
 ---
 
-## 五、错误处理
+#### 五、错误处理
 
-### 5.1 授权回调错误
+##### 5.1 授权回调错误
 
 EndlessPixel 可能在回调中返回错误：
 
@@ -269,7 +269,7 @@ GET /callback?error=access_denied&error_description=用户拒绝了授权请求&
 | `invalid_scope` | 权限范围不被允许 | 调整 `scope` |
 | `server_error` | EndlessPixel 服务端异常 | 重试或稍后再试 |
 
-### 5.2 令牌接口错误
+##### 5.2 令牌接口错误
 
 **请求失败** <Badge type="danger" text="400" />
 
