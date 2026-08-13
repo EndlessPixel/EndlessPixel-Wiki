@@ -4,6 +4,6 @@
 > 为保证教程时效性与完整性，相关说明**直接跳转官方文档查看**：
 
 📖 **Dominion 玩家完整教程**
-https://dominion.lunadeer.cn/notes/doc/player/
+[https://mc.lunadeer.cn/docs/plugins/dominion](https://mc.lunadeer.cn/docs/plugins/dominion)
 
 所有内容（创建领地、管理领地、成员、权限组、环境设置等）均已在官方文档完整说明。
