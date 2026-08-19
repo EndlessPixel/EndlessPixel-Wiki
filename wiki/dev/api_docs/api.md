@@ -139,7 +139,7 @@
   // 群号
   "group_id": "870594910",
   // 群名称
-  "group_name": "无尽像素 - EndlessPixel | 1.21.11原版纯净生存 | 冲刺！MC 26.1.2",
+  "group_name": "无尽像素 - EndlessPixel | 26.2原版纯净生存 | 冲刺！MC 26.2",
   // 群头像URL（标准尺寸 100x100）
   "avatar_url": "https://p.qlogo.cn/gh/870594910/870594910/640",
   // 群描述/简介
