@@ -14,7 +14,7 @@ Gitee: [https://gitee.com/system_mini](https://gitee.com/system_mini)
 
 Discord: [https://discord.gg/k63hRWt3fF](https://discord.gg/k63hRWt3fF)
 
-QQ: [https://qm.qq.com/cgi-bin/qm/qr?k=870594910](https://qm.qq.com/cgi-bin/qm/qr?k=870594910)
+QQ: [https://qm.qq.com/q/CGccVblaqA](https://qm.qq.com/q/CGccVblaqA)
 
 Twitch: [https://www.twitch.tv/system_mini](https://www.twitch.tv/system_mini)
 
