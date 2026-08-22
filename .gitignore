@@ -1,3 +1,4 @@
 # .gitignore
 node_modules
 wiki/.vitepress/cache
+wiki/.vitepress/.marscode/
