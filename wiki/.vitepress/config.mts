@@ -125,6 +125,7 @@ export default defineConfig({
                   { text: '基础API接口', link: '/dev/api_docs/api' },
                   { text: 'AI 客服', link: '/dev/api_docs/ai_customer_service' },
                   { text: '服务器硬件信息', link: '/dev/api_docs/hardware_information' },
+                  { text: 'Minecraft 语言文件', link: '/dev/api_docs/mclang' },
                   { text: '愚人节整蛊接口', link: '/dev/api_docs/fool' }
                 ]
               }

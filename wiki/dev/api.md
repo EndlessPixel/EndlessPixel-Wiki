@@ -7,6 +7,7 @@ API开放文档是服务器提供的API接口文档，用于开发人员调用�
 - [基础API接口](./api_docs/api)
 - [AI 客服](./api_docs/ai_customer_service)
 - [服务器硬件信息](./api_docs/hardware_information)
+- [Minecraft 语言文件](./api_docs/mclang)
 - [愚人节整蛊接口](./api_docs/fool)
 
 ## 废弃接口
