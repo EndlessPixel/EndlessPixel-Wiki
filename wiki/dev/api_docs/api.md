@@ -177,6 +177,66 @@
 
 ---
 
+### 查询EndlessPixel官方Discord服务器信息
+
+<Badge type="tip" text="GET" /> `https://www.endlesspixel.cn/api/discord/invite`
+
+获取 EndlessPixel 官方 Discord 服务器的公开信息，包含服务器名称、图标、简介、成员总数、在线人数与验证级别。由于国内直连 Discord 受限，数据由服务端代理获取，前端卡片可直接渲染。
+
+#### 返回示例
+
+**成功响应，返回Discord服务器信息** <Badge type="tip" text="200" />
+
+```json:line-numbers
+{
+  // 服务器名称
+  "name": "EndlessPixel",
+  // 服务器图标URL（来自 cdn.discordapp.com，无图标时为 null）
+  "icon": "https://cdn.discordapp.com/icons/123456789/abc.png",
+  // 服务器简介
+  "description": "无尽像素官方 Discord 服务器",
+  // 成员总数
+  "memberCount": 1234,
+  // 当前在线人数
+  "presenceCount": 56,
+  // 验证级别（数值 + 中文标签）
+  "verificationLevel": {
+    "value": 3,
+    "label": "高"
+  },
+  // 加入服务器链接（点击需在可访问 Discord 的网络环境下打开）
+  "joinUrl": "https://discord.gg/k63hRWt3fF"
+}
+```
+
+#### 错误响应
+
+**邀请链接无效或已过期** <Badge type="danger" text="404" />
+
+```json:line-numbers
+{
+  "error": "邀请链接无效或已过期"
+}
+```
+
+**上游请求过于频繁** <Badge type="danger" text="429" />
+
+```json:line-numbers
+{
+  "error": "请求过于频繁，请稍后再试"
+}
+```
+
+**服务内部错误** <Badge type="danger" text="500" />
+
+```json:line-numbers
+{
+  "error": "请求失败"
+}
+```
+
+---
+
 ### 查询EndlessPixel服务器玩家游戏截图列表
 
 <Badge type="tip" text="GET" /> `https://www.endlesspixel.cn/api/player/screenshot/list`
@@ -227,6 +287,7 @@
 |---|---|
 | 200 | 请求成功 |
 | 400 | 请求参数无效 / 参数缺失或格式错误 |
+| 404 | 资源不存在（如 Discord 邀请链接无效或已过期） |
 | 418 | 愚人节整蛊接口固定返回（I'm a teapot） |
 | 429 | 服务繁忙，触发限流 |
 | 500 | 服务器内部错误 |
