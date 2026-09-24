@@ -1,0 +1,57 @@
+# Dependabot 配置
+# 文档：https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+#
+# 本仓库是 VitePress 文档站，只有一个 devDependency（vitepress），
+# 另外 .github/workflows/deploy.yml 引用了若干 actions/*，所以两个生态都要管：
+# - npm            → 升 vitepress
+# - github-actions → 升 checkout / setup-node / configure-pages 等（这些目前都是钉大版本）
+#
+# 策略与 server 仓库保持一致：
+# - minor / patch 合并成一个 PR，major 单独开 PR 让人看过再合；
+# - commit message 沿用本仓库的 Conventional Commits 风格，产出 chore(deps-dev): ...；
+# - 本仓库没有 @types/* 依赖，所以不设 @types 分组，避免留一条永远不生效的配置。
+
+version: 2
+updates:
+  # ---------------- npm 依赖（当前只有 vitepress） ----------------
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Asia/Shanghai"
+    open-pull-requests-limit: 5
+    versioning-strategy: increase
+    labels:
+      - "dependencies"
+    commit-message:
+      prefix: "chore"
+      prefix-development: "chore"
+      include: "scope"
+    groups:
+      minor-and-patch:
+        applies-to: version-updates
+        update-types:
+          - "minor"
+          - "patch"
+
+  # ---------------- GitHub Actions ----------------
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Asia/Shanghai"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "github-actions"
+    commit-message:
+      prefix: "ci"
+    groups:
+      github-actions:
+        applies-to: version-updates
+        patterns:
+          - "*"
