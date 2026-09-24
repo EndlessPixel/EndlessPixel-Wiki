@@ -38,6 +38,8 @@ Modrinth: [https://www.modrinth.com/server/ep](https://www.modrinth.com/server/e
 
 Mcgod: [https://mcgodx.com/servers/427/](https://mcgodx.com/servers/427/)
 
+NexusMC: [https://www.nexusmc.cn/players/endlesspixel](https://www.nexusmc.cn/players/endlesspixel)
+
 Official Minecraft Server List: [https://findmcserver.com/server/6q0eAy03VM](https://findmcserver.com/server/6q0eAy03VM)
 
 McServ: [https://mcserv.org/cn/servers/ep](https://mcserv.org/cn/servers/ep)
