@@ -42,6 +42,7 @@ export default defineConfig({
               { text: '服务器版本说明', link: '/beginner/version' },
               { text: '服务器规则', link: '/beginner/rule' },
               { text: '相关链接', link: '/beginner/link' },
+              { text: '启动器推荐', link: '/beginner/launcher' },
               { text: '问题反馈', link: '/beginner/problem_feedback' },
               { text: '反欺诈提醒', link: '/beginner/antifraud_reminder' }
             ]
