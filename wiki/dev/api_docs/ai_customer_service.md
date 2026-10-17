@@ -54,6 +54,25 @@
 }
 ```
 
+##### 4. 关闭深度思考（可选）
+```json:line-numbers
+{
+    "messages": [...],
+    "deepThinking": false
+}
+```
+
+##### 5. 自定义采样参数（可选）
+```json:line-numbers
+{
+    "messages": [...],
+    "temperature": 0.6,
+    "top_p": 0.9,
+    "presence_penalty": 0.3,
+    "frequency_penalty": 0.2
+}
+```
+
 | 字段 | 类型 | 必填 | 说明 |
 |------|------|------|------|
 | messages | array | ✅ | 对话历史数组 |
@@ -62,6 +81,15 @@
 | messages[].timestamp | number | ✅ | 毫秒级Unix时间戳 |
 | messages[].senderName | string | ✅ | 前端展示昵称，固定填`用户`/`EPBot` |
 | model | string | ❌ | 指定使用的模型ID，不传则使用默认模型 |
+| deepThinking | boolean | ❌ | 是否启用深度思考，默认 `true`。传 `false` 时不注入思考提示词，模型直接给出正式回复，响应中不再包含思考过程 |
+| temperature | number | ❌ | 采样温度，范围 `0~2`，默认 `0.2`。越高越发散，越低越确定 |
+| top_p | number | ❌ | 核采样阈值，范围 `0~1`，默认 `0.7` |
+| presence_penalty | number | ❌ | 存在惩罚，范围 `-2~2`，默认 `0.5`。正值降低重复话题的概率 |
+| frequency_penalty | number | ❌ | 频率惩罚，范围 `-2~2`，默认 `0.3`。正值降低重复用词的概率 |
+
+::: warning
+四个采样参数一旦传入就必须合法：超出范围或不是数字会返回 `400` 错误，不会静默回退到默认值。不传则使用上表默认值。
+:::
 
 #### 二、流式响应解析规则 + 精简真实分片示例
 
@@ -281,3 +309,7 @@ console.log('Available models:', models);
 5. **限流保护**：单IP每分钟最多10次请求，超过后会返回错误提示
 6. **失败归因**：错误事件的 `serverSide` 为 `false` 时属于请求侧问题，
    不要当作服务器故障报修；`true` 或字段缺省时再考虑走官方反馈渠道
+7. **深度思考**：默认开启，可在请求体传 `deepThinking: false` 关闭；
+   关闭后模型不再输出 `<thinking>` 块，响应里也不会有思考过程
+8. **采样参数**：`temperature` / `top_p` / `presence_penalty` / `frequency_penalty` 均可选，
+   不传用默认值；传入的数值必须在各自范围内，否则返回 `400`
