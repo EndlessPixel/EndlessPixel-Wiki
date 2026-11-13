@@ -101,7 +101,7 @@
 |------|---------|------|
 | 文本增量 | `{"type":"text-delta","delta":"加入 EndlessPixel"}` | 持续拼接 `delta` 即为回复正文 |
 | 用量统计 | `{"type":"usage","usage":{"promptTokens":2579,"completionTokens":406,"totalTokens":2985}}` | 流末发送一次 |
-| 错误 | `{"type":"error","errorText":"上游服务繁忙，请稍后再试","serverSide":true}` | 出错时下发，随后以 `[DONE]` 结束 |
+| 错误 | `{"type":"error","errorText":"上游服务返回 521：...","serverSide":true,"error":{"kind":"upstream_status","message":"...","status":521}}` | 出错时下发，随后以 `[DONE]` 结束 |
 | 结束标记 | `[DONE]` | 整条请求彻底结束 |
 
 每一行仍以 `data: ` 开头。
@@ -141,29 +141,77 @@ data: [DONE]
 | 缺省 | 按服务端问题处理（判定用 `serverSide !== false`） | 展示 |
 
 客户端判断依据是「是否等于 `false`」，所以**字段缺失等同于服务端问题**。
-上游流式传输中途断开时下发的事件就属于这种情况。
+
+##### 结构化错误字段
+
+错误信息**不做措辞包装**：上游返回了什么就报什么，便于直接定位问题。
+
+```json:line-numbers
+{
+    "type": "error",
+    "errorText": "上游服务返回 521：Web server is returning an unknown error",
+    "serverSide": true,
+    "error": {
+        "kind": "upstream_status",
+        "message": "上游服务返回 521：Web server is returning an unknown error",
+        "status": 521,
+        "code": "upstream_error",
+        "detail": "{\"error\":{\"message\":\"Web server is returning an unknown error\"}}",
+        "model": "grok-4.7"
+    }
+}
+```
+
+| 字段 | 说明 |
+|------|------|
+| `kind` | 错误类别，取值见下表 |
+| `message` | 原始错误描述，与 `errorText` 一致 |
+| `status` | 上游 HTTP 状态码，仅 `upstream_status` 出现 |
+| `code` | 上游返回体里的错误码 |
+| `detail` | 上游原始响应体（截断到 500 字符） |
+| `model` | 本次请求使用的模型 |
+
+`kind` 的取值：
+
+| kind | 含义 |
+|------|------|
+| `rate_limited` | 单 IP 请求超频 |
+| `bad_request` | 请求体格式错误（`messages` 缺失或不是数组） |
+| `invalid_params` | 采样参数越界 |
+| `invalid_model` | 模型 ID 非法 |
+| `config` | 服务端配置缺失（`API_KEY` 未设置、系统提示词读取失败） |
+| `upstream_unreachable` | 连不上上游 |
+| `upstream_timeout` | 上游响应头超时 |
+| `upstream_status` | 上游返回了非 2xx |
+| `upstream_stream` | 上游流式传输中途断开 |
+| `internal` | 服务端内部异常 |
+
+> **脱敏**：凭证类内容（`API_KEY`、`Bearer` token、`sk-` 开头的 key）会被替换成 `***`，
+> 其余内容原样保留 —— 不再整条改写成「服务繁忙」之类的固定文案。
 
 #### 三、错误对照表
 
 表中的 `serverSide` 即错误事件里携带的字段，决定官方前端是否展示「链路自检」（详见第四节）。
 
-| 错误分类 | 触发条件 | 返回提示文本 | serverSide |
-|---------|---------|-------------|-----------|
-| IP限流 | 单IP 60秒内请求＞10次 | 请求过于频繁，请稍后再试 | `false` |
-| 入参格式错误 | messages缺失、非数组结构 | 请求格式错误 | `false` |
-| 服务文件异常 | system.txt读取失败 | 服务初始化失败，请联系管理员 | `true` |
-| 配置缺失 | 环境变量API_KEY为空 | 服务配置错误 | `true` |
-| 网络连接失败 | 上游接口DNS/连接失败 | 网络连接失败，请检查网络 | `true` |
-| 上游状态码 401/403 | 认证失败 | 认证失败，请联系管理员 | `false` |
-| 上游状态码 429 | 上游服务限流 | 上游服务限流，请稍后再试 | `false` |
-| 上游状态码 500+ | 上游服务故障 | 上游服务繁忙，请稍后再试 | `true` |
-| 其他上游状态码 | 其他HTTP错误 | 上游服务暂时不可用 (状态码xxx) | 4xx（408 除外）为 `false`，其余 `true` |
-| 超时/主动取消 | 120s超时、前端关闭页面 | 请求被取消或超时 | `true` |
-| 模型参数无效 | 传入不支持的模型ID | 无效的模型参数 | `false` |
-| 流传输中断 | 上游流式传输中途断开 | 上游流式传输中断，请重试 | 缺省（视为 `true`） |
-| 未知内部异常 | 捕获其他未归类报错 | 服务异常，请稍后再试 | `true` |
+| 错误分类 | `kind` | 触发条件 | `errorText`（原样返回，不再包装） | serverSide |
+|---------|--------|---------|------------------------------|-----------|
+| IP限流 | `rate_limited` | 单IP 60秒内请求＞10次 | 请求过于频繁，请稍后再试 | `false` |
+| 入参格式错误 | `bad_request` | messages缺失、非数组结构 | 请求格式错误 | `false` |
+| 采样参数越界 | `invalid_params` | 采样参数超出范围 | 无效的采样参数：temperature(0~2) / … | `false` |
+| 模型参数无效 | `invalid_model` | 传入不支持的模型ID | 无效的模型参数 | `false` |
+| 服务文件异常 | `config` | system.md 读取失败 | 系统提示词加载失败：<原始错误> | `true` |
+| 配置缺失 | `config` | 环境变量API_KEY为空 | 服务配置错误：环境变量 API_KEY 未设置 | `true` |
+| 网络连接失败 | `upstream_unreachable` | 上游接口DNS/连接失败 | 连接上游失败: <原始错误> | `true` |
+| 上游响应头超时 | `upstream_timeout` | 上游 25 秒内未返回响应头 | 上游 25000ms 内未返回响应头: <地址> | `true` |
+| 上游状态码 401/403 | `upstream_status` | 认证失败 | 上游服务返回 401：<上游原始信息> | `true` |
+| 上游状态码 429 | `upstream_status` | 上游服务限流 | 上游服务返回 429：<上游原始信息> | `false` |
+| 上游状态码 500+ | `upstream_status` | 上游服务故障 | 上游服务返回 5xx：<上游原始信息> | `true` |
+| 其他上游状态码 | `upstream_status` | 其他HTTP错误 | 上游服务返回 <状态码>：<上游原始信息> | 4xx（408 除外）为 `false`，其余 `true` |
+| 流传输中断 | `upstream_stream` | 上游流式传输中途断开 | 上游流式传输中断：<原始错误> | `true` |
+| 未知内部异常 | `internal` | 捕获其他未归类报错 | 服务内部错误：<原始错误> | `true` |
 
 判定规则：4xx 属请求侧或策略侧（参数、认证、限流），**唯独 408（上游响应超时）算服务侧**。
+其中 401/403 是例外：密钥由服务端统一管理，属于服务端配置问题，因此仍算服务侧（会展示链路自检）。
 
 #### 四、链路自检
 
@@ -172,7 +220,7 @@ data: [DONE]
 AI 对话失败、且**属于服务端问题**（`serverSide !== false`）时，官方前端会在失败消息下方展示一条链路自检，标明断在哪一层：
 
 ```
-链路自检  浏览器 ✔  网站后端 ✔  nginx ✔  代理服务器 ✔  上游服务 ❌
+链路自检  浏览器 ✔  网站后端 ✔  代理服务器 ✔  上游服务 ❌
 ```
 
 ##### 返回示例
@@ -181,7 +229,6 @@ AI 对话失败、且**属于服务端问题**（`serverSide !== false`）时，
     "layers": [
         { "id": "browser",  "label": "浏览器",     "ok": true  },
         { "id": "backend",  "label": "网站后端",   "ok": true  },
-        { "id": "nginx",    "label": "nginx",      "ok": true  },
         { "id": "proxy",    "label": "代理服务器", "ok": true  },
         { "id": "upstream", "label": "上游服务",   "ok": false }
     ]
@@ -194,19 +241,18 @@ AI 对话失败、且**属于服务端问题**（`serverSide !== false`）时，
 |----|----|------|
 | 浏览器 | `browser` | 恒 `true` —— 能把失败消息渲染出来就说明它在 |
 | 网站后端 | `backend` | 恒 `true` —— 能拿到本接口的响应就说明它在 |
-| nginx | `nginx` | `GET ${AI_EDGE_BASE_URL}/ping-nginx`，非 2xx 即 `false` |
 | 代理服务器 | `proxy` | `GET ${AI_EDGE_BASE_URL}/ping`，非 2xx 即 `false` |
 | 上游服务 | `upstream` | **不单独探测**，恒 `false` |
 
 上游不探测的原因：能走到自检这一步，说明本次对话已经失败了 ——
-下面两层只要有一层不通，上游必然不可达；两层都通时，错误只可能出在上游。
+代理服务器不通，上游必然不可达；它通的时候，错误只可能出在上游。
 所以自检永远只标记一个断点，它之后的层连带 ❌。
 
 `AI_EDGE_BASE_URL` 是服务端环境变量，不对外公开。
 
 ##### 实现说明
 - 探测在**服务端**完成，前端只负责展示，因此不受 CORS 限制，也不会被浏览器拦截而误判 ❌。
-- 单次探测超时 3 秒，nginx 与代理服务器两层**并发**探测。
+- 单次探测超时 3 秒。
 - 官方前端对结果有 30 秒缓存，同一次故障里的多条失败消息不会重复请求。
 - 本接口只负责「探测并如实回报」，是否展示由客户端根据失败原因决定。
 
@@ -285,6 +331,8 @@ await fetchEventSource('/api/ai/chat', {
         // 处理错误：serverSide 为 false 属请求侧问题，不必展示链路自检
         if (data.type === 'error') {
             console.error('AI error:', data.errorText, 'serverSide:', data.serverSide);
+            // error 为结构化错误详情：kind / message / status / code / detail / model
+            console.error('detail:', data.error);
         }
     },
     onerror(error) {
@@ -304,12 +352,14 @@ console.log('Available models:', models);
 
 1. **流式响应处理**：需要持续拼接 `text-delta` 事件的 `delta`，直到收到 `[DONE]`
 2. **Token统计**：只在流末的 `usage` 事件中提供；上游未回传时该事件不出现
-3. **请求超时**：后端设置了120秒超时限制
+3. **请求超时**：后端要求上游在 25 秒内返回响应头（`UPSTREAM_HEADER_TIMEOUT_MS`），超时即中断请求
 4. **模型选择**：不指定 `model` 字段时使用服务端默认模型
 5. **限流保护**：单IP每分钟最多10次请求，超过后会返回错误提示
 6. **失败归因**：错误事件的 `serverSide` 为 `false` 时属于请求侧问题，
    不要当作服务器故障报修；`true` 或字段缺省时再考虑走官方反馈渠道
 7. **深度思考**：默认开启，可在请求体传 `deepThinking: false` 关闭；
    关闭后模型不再输出 `<thinking>` 块，响应里也不会有思考过程
+8. **错误信息不再包装**：`errorText` 与 `error.message` 直接给出原始原因，
+   需要区分具体失败点时请读 `error.kind` / `status` / `code`，不要按文案做字符串匹配
 8. **采样参数**：`temperature` / `top_p` / `presence_penalty` / `frequency_penalty` 均可选，
    不传用默认值；传入的数值必须在各自范围内，否则返回 `400`
