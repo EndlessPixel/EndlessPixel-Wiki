@@ -202,7 +202,7 @@ data: [DONE]
 | 服务文件异常 | `config` | system.md 读取失败 | 系统提示词加载失败：<原始错误> | `true` |
 | 配置缺失 | `config` | 环境变量API_KEY为空 | 服务配置错误：环境变量 API_KEY 未设置 | `true` |
 | 网络连接失败 | `upstream_unreachable` | 上游接口DNS/连接失败 | 连接上游失败: <原始错误> | `true` |
-| 上游响应头超时 | `upstream_timeout` | 上游 25 秒内未返回响应头 | 上游 25000ms 内未返回响应头: <地址> | `true` |
+| 上游响应头超时 | `upstream_timeout` | 上游 60 秒内未返回响应头 | 上游 60000ms 内未返回响应头: <地址> | `true` |
 | 上游状态码 401/403 | `upstream_status` | 认证失败 | 上游服务返回 401：<上游原始信息> | `true` |
 | 上游状态码 429 | `upstream_status` | 上游服务限流 | 上游服务返回 429：<上游原始信息> | `false` |
 | 上游状态码 500+ | `upstream_status` | 上游服务故障 | 上游服务返回 5xx：<上游原始信息> | `true` |
@@ -352,7 +352,7 @@ console.log('Available models:', models);
 
 1. **流式响应处理**：需要持续拼接 `text-delta` 事件的 `delta`，直到收到 `[DONE]`
 2. **Token统计**：只在流末的 `usage` 事件中提供；上游未回传时该事件不出现
-3. **请求超时**：后端要求上游在 25 秒内返回响应头（`UPSTREAM_HEADER_TIMEOUT_MS`），超时即中断请求
+3. **请求超时**：后端要求上游在 60 秒内返回响应头（`UPSTREAM_HEADER_TIMEOUT_MS`），超时即中断请求
 4. **模型选择**：不指定 `model` 字段时使用服务端默认模型
 5. **限流保护**：单IP每分钟最多10次请求，超过后会返回错误提示
 6. **失败归因**：错误事件的 `serverSide` 为 `false` 时属于请求侧问题，
