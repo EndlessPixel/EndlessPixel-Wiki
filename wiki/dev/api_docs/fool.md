@@ -6,6 +6,10 @@
 
 <Badge type="warning" text="POST" /> `https://www.endlesspixel.cn/api/fool`
 
+<br>
+
+<Badge type="danger" text="PUT" /> `https://www.endlesspixel.cn/api/fool`
+
 ::: tip
 **这是一个纯整蛊娱乐接口**，固定返回 **HTTP 418 I'm a teapot** 状态码，用于愚人节趣味互动，**无任何实际业务功能**。
 
@@ -188,6 +192,51 @@
 | fake_post_processing | string | 虚假 POST 处理信息 |
 | fake_data_saved | string | 虚假数据保存信息 |
 | fake_response_delay | string | 虚假响应延迟 |
+
+---
+
+#### PUT 请求
+
+PUT 是整蛊接口里最欠揍的一个。它假装接受你的更新，其实把请求体换成一堆茶壶彩蛋，还一本正经地告诉你更新成功了。跟 POST 一样固定返回 **HTTP 418**，不需要请求体，传什么都无所谓。
+
+```bash
+curl -X PUT https://www.endlesspixel.cn/api/fool
+```
+
+**请求成功，返回 PUT 专属整蛊数据** <Badge type="tip" text="418" />
+
+```json
+{
+  "code": 418,
+  "put_easter_egg": {
+    "id": "PUT-001",
+    "title": "Update installed: Teapot OS v4.18 🫖",
+    "punchline": "Nothing actually changed — it's April Fools 😜",
+    "reward": "1 virtual biscuit 🍪"
+  },
+  "put_message": "PUT accepted — the teapot replaced your payload with 418 tiny teapots 🫖",
+  "put_fake_fix": "Fix: replace Content-Type with application/tea 🍵",
+  "put_fake_status": "status: BREWING_UPDATE (estimated 4.18s) ⏳",
+  "star_message": "Star now, debug later — the teapot approves ✅⭐️"
+}
+```
+
+`put_easter_egg` 的字段不固定，彩蛋里只有 `id` 和 `title` 是必有的，`punchline` 和 `reward` 看命。
+
+#### PUT 专属字段
+
+| 字段 | 类型 | 说明 |
+|------|------|------|
+| code | number | 固定 418 |
+| put_easter_egg | object | 随机彩蛋对象 |
+| put_easter_egg.id | string | 彩蛋编号，如 `PUT-001` |
+| put_easter_egg.title | string | 彩蛋标题 |
+| put_easter_egg.punchline | string | 彩蛋包袱，可选 |
+| put_easter_egg.reward | string | 虚假奖励，可选 |
+| put_message | string | PUT 整蛊消息 |
+| put_fake_fix | string | 虚假修复建议 |
+| put_fake_status | string | 虚假更新状态 |
+| star_message | string | 推荐仓库的整蛊提示 |
 
 ---
 
