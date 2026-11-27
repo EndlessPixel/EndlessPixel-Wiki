@@ -2,7 +2,7 @@
 
 <Badge type="tip" text="GET" /> `https://www.endlesspixel.cn/api/mclang/blocks`
 
-获取 Minecraft 26.2 方块（`block.minecraft.<id>`）到中文名的映射表。数据来源于 Mojang 官方 `zh_cn.json` 语言文件。
+获取 Minecraft 26.3 方块（`block.minecraft.<id>`）到中文名的映射表。数据来源于 Mojang 官方 `zh_cn.json` 语言文件。
 
 <Badge type="tip" text="GET" /> `https://www.endlesspixel.cn/api/mclang/blocks?id=block.minecraft.acacia_button`
 
@@ -53,7 +53,7 @@
 
 <Badge type="tip" text="GET" /> `https://www.endlesspixel.cn/api/mclang/items`
 
-获取 Minecraft 26.2 物品（`item.minecraft.<id>`）到中文名的映射表。
+获取 Minecraft 26.3 物品（`item.minecraft.<id>`）到中文名的映射表。
 
 <Badge type="tip" text="GET" /> `https://www.endlesspixel.cn/api/mclang/items?id=item.minecraft.apple`
 
@@ -100,7 +100,7 @@
 
 <Badge type="tip" text="GET" /> `https://www.endlesspixel.cn/api/mclang/entities`
 
-获取 Minecraft 26.2 实体（`entity.minecraft.<id>`）到中文名的映射表。
+获取 Minecraft 26.3 实体（`entity.minecraft.<id>`）到中文名的映射表。
 
 <Badge type="tip" text="GET" /> `https://www.endlesspixel.cn/api/mclang/entities?id=entity.minecraft.creaking`
 
@@ -147,7 +147,7 @@
 
 <Badge type="tip" text="GET" /> `https://www.endlesspixel.cn/api/mclang/enchants`
 
-获取 Minecraft 26.2 附魔中文翻译表，默认合并返回**官方附魔**与 **EndlessPixel 服务器自定义附魔**：
+获取 Minecraft 26.3 附魔中文翻译表，默认合并返回**官方附魔**与 **EndlessPixel 服务器自定义附魔**：
 
 - 官方附魔键名格式：`enchantment.minecraft.<id>`
 - 服务器自定义附魔键名格式：`enchantments:<id>`（如攻击速度、吸血等服务器特有附魔）
@@ -234,9 +234,12 @@
 
 #### 数据来源
 
-- 所有翻译数据基于 **Minecraft 26.2** 版本。
-- 官方数据（`blocks` / `items` / `entities` / 官方 `enchants`）来源于 Mojang 官方 `zh_cn.json` 语言文件，与游戏内显示一致。
+- 所有翻译数据基于 **Minecraft 26.3** 版本（2026-09-15 发布，协议号 777，数据包格式 121.0）。
+- 官方数据（`blocks` / `items` / `entities` / 官方 `enchants`）提取自 Mojang 官方资源包索引 34 中的
+  `minecraft/lang/zh_cn.json`（SHA-1 `82e35ea45dee5af0a68788d453d51cc7c305c77b`），与游戏内显示一致。
+- 当前条目数：`blocks` 2000 / `items` 807 / `entities` 220 / 官方 `enchants` 44。
 - `enchants` 中的 `enchantments:<id>` 为 **EndlessPixel 服务器自定义附魔**，非原版内容，请勿用于其他服务器。
+- 数据随游戏版本更新而重新生成；旧版本键名若在官方语言文件中移除（如 26.3 移除的 3 条唱片描述），会一并删除。
 
 #### 响应字段说明（单条查询）
 
