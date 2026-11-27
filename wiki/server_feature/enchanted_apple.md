@@ -93,7 +93,11 @@ box-shadow: 0 4px 16px rgba(251,191,36,0.15);
 ## 🔮 附魔金苹果合成配方
 <div class="golden-img-wrap">
 
+![附魔金苹果合成配方](https://cdn.modrinth.com/data/cached_images/16d7770eb6e0e90de9e7d203968b1396de1f484c.png)
+
 <br>
+
+![更多附魔金苹果合成配方](https://cdn.modrinth.com/data/cached_images/13eb3dd6433c2273f849914f751751d4cf9f3f2c.png)
 
 </div>
 
