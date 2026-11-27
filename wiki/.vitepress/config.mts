@@ -115,6 +115,15 @@ export default defineConfig({
             ]
           },
           {
+            text: '官网指南',
+            collapsed: false,
+            items: [
+              { text: '官网能做什么', link: '/website/overview' },
+              { text: '官方下载区', link: '/website/downloads' },
+              { text: '在线工具', link: '/website/tools' }
+            ]
+          },
+          {
             text: '开发者文档',
             collapsed: true,
             items: [
